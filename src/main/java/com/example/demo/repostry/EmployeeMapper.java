@@ -9,5 +9,8 @@ import javax.transaction.Transactional;
 
 @Transactional
 public interface EmployeeMapper extends JpaRepository<Employee,Integer> {
+
     Employee findEmployeeByEmployeeNumberAndPassword(@Param("employeeNumber")Integer employeeNumber, @Param("password")String password);
+
+    Employee findEmployeeByEmployeeNumber(@Param("employeeNumber")Integer employeeNumber);
 }

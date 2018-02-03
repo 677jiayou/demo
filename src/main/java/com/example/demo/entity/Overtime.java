@@ -3,78 +3,32 @@ package com.example.demo.entity;
 
 import lombok.Data;
 
-@Data
-public class Overtime {
+import javax.persistence.*;
 
-  private long id;
-  private long departmentNumber;
-  private long employeeNumber;
+@Data
+@Entity
+@Table(name = "overtime")
+public class Overtime {
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Integer id;
+  @Column(name = "department_number")
+  private Integer departmentNumber;
+  @Column(name = "employee_number")
+  private Integer employeeNumber;
+  @Column(name = "day")
   private java.sql.Date day;
+  @Column(name = "start_time")
   private java.sql.Time startTime;
+  @Column(name = "end_time")
   private java.sql.Time endTime;
+  @Column(name = "notes")
   private String notes;
 
+  @Transient
+  private Employee employee;
+  @Transient
+  private Department department;
 
-  public long getId() {
-    return id;
-  }
-
-  public void setId(long id) {
-    this.id = id;
-  }
-
-
-  public long getDepartmentNumber() {
-    return departmentNumber;
-  }
-
-  public void setDepartmentNumber(long departmentNumber) {
-    this.departmentNumber = departmentNumber;
-  }
-
-
-  public long getEmployeeNumber() {
-    return employeeNumber;
-  }
-
-  public void setEmployeeNumber(long employeeNumber) {
-    this.employeeNumber = employeeNumber;
-  }
-
-
-  public java.sql.Date getDay() {
-    return day;
-  }
-
-  public void setDay(java.sql.Date day) {
-    this.day = day;
-  }
-
-
-  public java.sql.Time getStartTime() {
-    return startTime;
-  }
-
-  public void setStartTime(java.sql.Time startTime) {
-    this.startTime = startTime;
-  }
-
-
-  public java.sql.Time getEndTime() {
-    return endTime;
-  }
-
-  public void setEndTime(java.sql.Time endTime) {
-    this.endTime = endTime;
-  }
-
-
-  public String getNotes() {
-    return notes;
-  }
-
-  public void setNotes(String notes) {
-    this.notes = notes;
-  }
 
 }

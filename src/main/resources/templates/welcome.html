@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -27,7 +27,7 @@
             <div class="jumbotron">
                 <div style="margin-left: 250px">
                     <p>&nbsp;</p>
-                    <h1>name</h1>
+                    <h1 th:text="${session.employee.name}">name</h1>
                     <p>&nbsp;</p>
                     <p>欢迎登录HR医院人事管理系统</p>
                     <p id="time">&nbsp;</p>

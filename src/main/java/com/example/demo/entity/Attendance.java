@@ -3,108 +3,35 @@ package com.example.demo.entity;
 
 import lombok.Data;
 
+import javax.persistence.*;
+
 @Data
+@Entity
+@Table(name = "attendance")
 public class Attendance {
-
-  private long id;
-  private long employeeNumber;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Integer id;
+  @Column(name = "employee_number")
+  private Integer employeeNumber;
+  @Column(name = "day")
   private java.sql.Date day;
+  @Column(name = "time_type")
   private String timeType;
+  @Column(name = "start_time")
   private java.sql.Time startTime;
+  @Column(name = "start_type")
   private String startType;
+  @Column(name = "end_time")
   private java.sql.Time endTime;
+  @Column(name = "end_type")
   private String endType;
+  @Column(name = "work_type")
   private String workType;
+  @Column(name = "notes")
   private String notes;
-
-
-  public long getId() {
-    return id;
-  }
-
-  public void setId(long id) {
-    this.id = id;
-  }
-
-
-  public long getEmployeeNumber() {
-    return employeeNumber;
-  }
-
-  public void setEmployeeNumber(long employeeNumber) {
-    this.employeeNumber = employeeNumber;
-  }
-
-
-  public java.sql.Date getDay() {
-    return day;
-  }
-
-  public void setDay(java.sql.Date day) {
-    this.day = day;
-  }
-
-
-  public String getTimeType() {
-    return timeType;
-  }
-
-  public void setTimeType(String timeType) {
-    this.timeType = timeType;
-  }
-
-
-  public java.sql.Time getStartTime() {
-    return startTime;
-  }
-
-  public void setStartTime(java.sql.Time startTime) {
-    this.startTime = startTime;
-  }
-
-
-  public String getStartType() {
-    return startType;
-  }
-
-  public void setStartType(String startType) {
-    this.startType = startType;
-  }
-
-
-  public java.sql.Time getEndTime() {
-    return endTime;
-  }
-
-  public void setEndTime(java.sql.Time endTime) {
-    this.endTime = endTime;
-  }
-
-
-  public String getEndType() {
-    return endType;
-  }
-
-  public void setEndType(String endType) {
-    this.endType = endType;
-  }
-
-
-  public String getWorkType() {
-    return workType;
-  }
-
-  public void setWorkType(String workType) {
-    this.workType = workType;
-  }
-
-
-  public String getNotes() {
-    return notes;
-  }
-
-  public void setNotes(String notes) {
-    this.notes = notes;
-  }
+  //字段外属性
+  @Transient
+  private Employee employee;
 
 }

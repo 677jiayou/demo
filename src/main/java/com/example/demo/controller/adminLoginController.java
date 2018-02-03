@@ -4,14 +4,20 @@ import com.example.demo.entity.Employee;
 import com.example.demo.service.EmployeeServiceImpl;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
+
 @Controller
 @CrossOrigin
 public class adminLoginController {
 
     @Autowired
     private EmployeeServiceImpl employeeService;
+    @Autowired
+    private HttpSession httpSession;
 
 //    登录页面映射处理
     @GetMapping("/")
@@ -23,10 +29,7 @@ public class adminLoginController {
     @ResponseBody
     public String actionLogin(@RequestParam("loginUserName") Integer username,@RequestParam("loginPassword") String password){
         Employee employee=employeeService.findEmployeeByNumAndPassword(username,password);
-        boolean flag=true;
-        if (employee==null){
-            flag=false;
-        }
-        return  new Gson().toJson(flag);
+        httpSession.setAttribute("employee",employee);
+        return  new Gson().toJson(employee);
     }
 }

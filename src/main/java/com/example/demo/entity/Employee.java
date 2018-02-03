@@ -5,7 +5,6 @@ package com.example.demo.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.sql.Date;
 
 @Data
 @Entity
@@ -43,4 +42,9 @@ public class Employee {
   @Column(name = "notes")
   private String notes;
 
+  //字段外属性
+  @Transient
+  private Department department;
+  @Transient
+  private Position position;
 }
