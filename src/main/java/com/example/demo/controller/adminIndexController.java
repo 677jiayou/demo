@@ -16,5 +16,6 @@ public class adminIndexController {
     @RequestMapping("/welcome.do")
     public String welcome(){
         return "welcome";
+        
     }
 }
