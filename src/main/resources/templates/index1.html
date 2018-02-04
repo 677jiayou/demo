@@ -89,7 +89,7 @@
                         </li>
                         <li><a class="J_menuItem" href="/leaveAdd.do">申请请假</a>
                         </li>
-                        <li><a class="J_menuItem" href="leave/oneself.do">查看请假记录</a>
+                        <li><a class="J_menuItem" th:href="@{/leaveRecord.do(employeeNumber=${session.employee.employeeNumber})}" >查看请假记录</a>
                         </li>
                     </ul>
                 </li>
