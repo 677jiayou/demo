@@ -10,5 +10,7 @@ public interface ILeaService {
     List<Lea> getAllLeas();
     //根据员工号查询请假记录
     List<Lea> getLeasByaEmployeeNumber(Integer employeeNumber);
+    //根据请假的批准状态查询请假信息
+    List<Lea> getLeasByStatus(String status);
 
 }

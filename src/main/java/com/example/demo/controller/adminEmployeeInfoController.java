@@ -53,6 +53,14 @@ public class adminEmployeeInfoController {
         session.setAttribute("attendanceList",attendanceList);
         return "attendance";
     }
+    //全部请假信息映射
+    @GetMapping("/attendanceList.do")
+    public String attendanceList(){
+        List<Attendance> attendanceList=attendanceService.getAllAttendance();
+        session.setAttribute("attendanceList",attendanceList);
+        return "attendance";
+    }
+
 
     //个人加班信息
     @GetMapping("/overtime.do")
@@ -61,6 +69,14 @@ public class adminEmployeeInfoController {
 
         session.setAttribute("overtimeList",overtimeList);
         return "overtime";
+    }
+    //所有员工加班信息
+    @GetMapping("/Allovertime.do")
+    public String overtime(){
+        List<Overtime> allOvertimeList=overtimeService.getAllOverTime();
+
+        session.setAttribute("allOvertimeList",allOvertimeList);
+        return "overtime_list";
     }
     //在职员工管理
     @RequestMapping("/employeelist")

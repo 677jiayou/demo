@@ -20,7 +20,11 @@ public class AttendanceServiceImpl implements IAttendanceService {
     @Override
     public List<Attendance> getAllAttendance() {
         List<Attendance> attendanceList=attendanceMapper.findAll();
-        return null;
+        for (Attendance attendance:attendanceList
+                ) {
+            attendance.setEmployee(employeeMapper.findEmployeeByEmployeeNumber(attendance.getEmployeeNumber()));
+        }
+        return attendanceList;
     }
 
     @Override

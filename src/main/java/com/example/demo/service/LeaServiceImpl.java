@@ -43,4 +43,15 @@ public class LeaServiceImpl implements ILeaService {
         }
         return leaList;
     }
+
+    @Override
+    public List<Lea> getLeasByStatus(String status) {
+        List<Lea> leaList=leaMapper.findLeasByStatus(status);
+        for (Lea lea:leaList
+                ) {
+            lea.setDepartment(departmentMapper.findDepartmentByDepartmentNumber(lea.getDepartmentNumber()));
+            lea.setEmployee(employeeMapper.findEmployeeByEmployeeNumber(lea.getEmployeeNumber()));
+        }
+        return leaList;
+    }
 }

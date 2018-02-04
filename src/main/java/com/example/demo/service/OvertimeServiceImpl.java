@@ -22,6 +22,17 @@ public class OvertimeServiceImpl implements IOvertimeService {
     private EmployeeMapper employeeMapper;
 
     @Override
+    public List<Overtime> getAllOverTime() {
+        List<Overtime> overtimeList=overtimeMapper.findAll();
+        for (Overtime overtime:overtimeList
+                ) {
+            overtime.setDepartment(departmentMapper.findDepartmentByDepartmentNumber(overtime.getDepartmentNumber()));
+            overtime.setEmployee(employeeMapper.findEmployeeByEmployeeNumber(overtime.getEmployeeNumber()));
+        }
+        return overtimeList;
+    }
+
+    @Override
     public List<Overtime> getOvertiomByEmployeeNumber(Integer employeeNumber) {
         List<Overtime> overtimeList=overtimeMapper.findOvertimesByEmployeeNumber(employeeNumber);
         for (Overtime overtime:overtimeList

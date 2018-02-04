@@ -10,4 +10,6 @@ import java.util.List;
 public interface LeaMapper extends JpaRepository<Lea,Integer> {
 
     List<Lea> findLeasByEmployeeNumber(Integer employeeNumber);
+
+    List<Lea> findLeasByStatus(String status);
 }

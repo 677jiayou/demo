@@ -119,9 +119,9 @@
                     <span class="fa arrow"></span>
                 </a>
                     <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="attendance/list.do">考勤管理</a>
+                        <li><a class="J_menuItem" href="/attendanceList.do">考勤管理</a>
                         </li>
-                        <li><a class="J_menuItem" href="overtime/listPage.do?pageNo=1">加班管理</a>
+                        <li><a class="J_menuItem" href="Allovertime.do">加班管理</a>
                         </li>
                     </ul>
                 </li>
@@ -131,11 +131,11 @@
                     <span class="fa arrow"></span>
                 </a>
                     <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="leave/notlist.do">未批准列表</a>
+                        <li><a class="J_menuItem" th:href="@{/noleaveList.do(status='未批准')}">未批准列表</a>
                         </li>
-                        <li><a class="J_menuItem" href="leave/yeslist.do">已批准列表</a>
+                        <li><a class="J_menuItem" th:href="@{/yesleaveList.do(status='已批准')}">已批准列表</a>
                         </li>
-                        <li><a class="J_menuItem" href="leave/list.do">请假记录</a>
+                        <li><a class="J_menuItem" href="/leaveList.do">请假记录</a>
                         </li>
                     </ul>
                 </li>

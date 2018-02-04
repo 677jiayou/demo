@@ -30,4 +30,23 @@ public class adminLeaveController {
         session.setAttribute("leaList",leaList);
         return "leaves_record";
     }
+
+    @RequestMapping("/leaveList.do")
+    public String leaveList(){
+        List<Lea> allLeaList=leaService.getAllLeas();
+        session.setAttribute("allLeaList",allLeaList);
+        return "leaves_list";
+    }
+    @RequestMapping("/yesleaveList.do")
+    public String yesleaveList(@RequestParam("status")String status){
+        List<Lea> yesLeaList=leaService.getLeasByStatus(status);
+        session.setAttribute("yesLeaList",yesLeaList);
+        return "yes_leaves_list";
+    }
+    @RequestMapping("/noleaveList.do")
+    public String noleaveList(@RequestParam("status")String status){
+        List<Lea> noLeaList=leaService.getLeasByStatus(status);
+        session.setAttribute("noLeaList",noLeaList);
+        return "no_leaves_list";
+    }
 }
