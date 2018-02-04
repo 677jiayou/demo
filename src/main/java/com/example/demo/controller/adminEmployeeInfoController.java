@@ -1,15 +1,13 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.Attendance;
-import com.example.demo.entity.Department;
-import com.example.demo.entity.Overtime;
-import com.example.demo.entity.Position;
+import com.example.demo.entity.*;
 import com.example.demo.repostry.AttendanceMapper;
 import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.jnlp.PersistenceService;
@@ -30,6 +28,8 @@ public class adminEmployeeInfoController {
     private OvertimeServiceImpl overtimeService;
     @Autowired
     private AttendanceServiceImpl attendanceService;
+    @Autowired
+    private EmployeeServiceImpl employeeService;
     // 个人信息页面映射处理
     @GetMapping("/employeeDetail.do")
     public String toDetail(){
@@ -58,7 +58,21 @@ public class adminEmployeeInfoController {
     @GetMapping("/overtime.do")
     public String overtime(@RequestParam("employeeNumber") Integer employeeNumber){
         List<Overtime> overtimeList=overtimeService.getOvertiomByEmployeeNumber(employeeNumber);
+
         session.setAttribute("overtimeList",overtimeList);
         return "overtime";
     }
+    //在职员工管理
+    @RequestMapping("/employeelist")
+    public String employeelist(){
+        List<Employee> employeeList=employeeService.findAllEmployee();
+        for (Employee employee:employeeList
+             ) {
+            employee.setDepartment(departmentService.getDepartmentByDepartmentNumber(employee.getDepartmentNumber()));
+            employee.setPosition(positionService.getPositionByPositionNumber(employee.getPositionNumber()));
+        }
+        session.setAttribute("employeeList",employeeList);
+        return  "employee_list";
+    }
+
 }

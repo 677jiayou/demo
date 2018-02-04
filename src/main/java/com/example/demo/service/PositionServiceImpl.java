@@ -19,4 +19,10 @@ public class PositionServiceImpl implements IPositionService {
         List<Position> positionList=positionMapper.findAll();
         return positionList;
     }
+
+    @Override
+    public Position getPositionByPositionNumber(Integer positionNumber) {
+        Position position=positionMapper.findPositionByPositionNumber(positionNumber);
+        return position;
+    }
 }

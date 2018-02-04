@@ -8,4 +8,6 @@ public interface IPositionService {
 
     //获取职位信息
     List<Position> getAllPositionInfo();
+    //根据职位编号获取职位信息
+    Position getPositionByPositionNumber(Integer positionNumber);
 }

@@ -18,4 +18,10 @@ public class DepartmentServiceImpl implements IDepartmentService {
         List<Department> departmentList=departmentMapper.findAll();
         return departmentList;
     }
+
+    @Override
+    public Department getDepartmentByDepartmentNumber(Integer departmentNumber) {
+        Department department=departmentMapper.findDepartmentByDepartmentNumber(departmentNumber);
+        return department;
+    }
 }
