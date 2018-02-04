@@ -22,6 +22,7 @@ public class adminPositionController {
 
     @RequestMapping("/positionList.do")
     public String departmentList(){
+
         List<Position> positionList=positionService.getAllPositionInfo();
         session.setAttribute("positionList",positionList);
         return "position_list";
