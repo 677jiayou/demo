@@ -5,10 +5,8 @@ import com.example.demo.repostry.AttendanceMapper;
 import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.jnlp.PersistenceService;
 import javax.servlet.http.HttpSession;
@@ -33,6 +31,10 @@ public class adminEmployeeInfoController {
     // 个人信息页面映射处理
     @GetMapping("/employeeDetail.do")
     public String toDetail(){
+        Employee employee= (Employee) session.getAttribute("employee");
+        session.removeAttribute("employee");
+        Employee employee1=employeeService.findEmployeeByEmployeeNumber(employee.getEmployeeNumber());
+        session.setAttribute("employee",employee1);
         return "employee_detail";
     }
 
@@ -44,6 +46,14 @@ public class adminEmployeeInfoController {
         session.setAttribute("positionList",positionList);
         session.setAttribute("departmentList",departmentList);
         return "employee_update";
+    }
+
+    //修改个人信息处理
+    @PostMapping("/employeeUpdate.do")
+    public ModelAndView employeeUpdate(@ModelAttribute(value="Employee") Employee employee){
+        boolean flag=employeeService.updateEmployee(employee);
+        System.out.println("更新结果："+flag);
+        return new ModelAndView("redirect:/employeeDetail.do");
     }
 
     //个人请假信息
@@ -77,6 +87,27 @@ public class adminEmployeeInfoController {
 
         session.setAttribute("allOvertimeList",allOvertimeList);
         return "overtime_list";
+    }
+
+    //去安排加班
+    @GetMapping("/overtimeToAdd.do")
+    public String overtimeToAdd(){
+        List<Employee> employeeList=employeeService.findAllEmployee();
+        List<Department> departmentList=departmentService.getAllDepartmentInfo();
+        session.setAttribute("employeeList",employeeList);
+        session.setAttribute("departmentList",departmentList);
+        return "overtime_add";
+    }
+    //新增加班信息
+    @PostMapping("/overtimeAdd.do")
+    public ModelAndView overtimeAdd(@ModelAttribute(value="Overtime") Overtime overtime){
+
+        boolean flag=overtimeService.saveOvertime(overtime);
+        System.out.println(false);
+        System.out.println(overtime);
+
+        return new ModelAndView("redirect:/Allovertime.do");
+
     }
     //在职员工管理
     @RequestMapping("/employeelist")

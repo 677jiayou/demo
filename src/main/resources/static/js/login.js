@@ -1,6 +1,5 @@
 $().ready(function () {
     $("#btn_login").click(function () {
-        // alert("进入了");
         //获取用户输入的用户名
         var username=$("#login_username").val();
         //获取用户输入的密码
@@ -15,14 +14,11 @@ $().ready(function () {
             $.ajax({
                 url: "actionLogin.do" ,//url
                 type: "POST",//方法类型
-                // data: $("#login_form").serialize(),
                 data: {"loginUserName":username,"loginPassword":password},
                 dataType: "Json",//预期服务器返回的数据类型
                 success: function (response) {
                     //response为布尔值，true时表示用户名密码输入正确，我们返回首页，false表示输入错误
                     if(response!=null){
-                        // $("#np-warning").html("");
-                        alert(response);
                         if (response.position.name=="人事部主任") {
                             location.href="index1.do"
                         }else

@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Employee;
+import com.example.demo.entity.Position;
 import com.example.demo.service.EmployeeServiceImpl;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,10 @@ public class adminLoginController {
         Employee employee=employeeService.findEmployeeByNumAndPassword(username,password);
         httpSession.setAttribute("employee",employee);
         return  new Gson().toJson(employee);
+    }
+
+    @GetMapping("/goWelcome.do")
+    public String goIndex(){
+        return "welcome";
     }
 }

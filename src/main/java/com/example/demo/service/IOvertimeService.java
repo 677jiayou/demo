@@ -9,4 +9,6 @@ public interface IOvertimeService {
     List<Overtime> getAllOverTime();
     //根据员工号查询加班信息
     List<Overtime> getOvertiomByEmployeeNumber(Integer employeeNumber);
+    //插入加班信息
+    boolean saveOvertime(Overtime overtime);
 }

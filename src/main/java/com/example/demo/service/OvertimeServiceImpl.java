@@ -42,4 +42,18 @@ public class OvertimeServiceImpl implements IOvertimeService {
         }
         return overtimeList;
     }
+
+    @Override
+    public boolean saveOvertime(Overtime overtime) {
+
+        try {
+            overtimeMapper.save(overtime);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+
+        }
+
+    }
 }

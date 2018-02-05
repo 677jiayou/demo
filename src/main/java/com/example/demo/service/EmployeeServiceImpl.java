@@ -47,4 +47,34 @@ public class EmployeeServiceImpl implements IEmployeeService {
         employee.setDepartment(departmentMapper.findDepartmentByDepartmentNumber(employee.getDepartmentNumber()));
         return employee;
     }
+
+    @Override
+    public boolean updateEmployee(Employee employee) {
+        try {
+            Employee employee1=employeeMapper.findEmployeeByEmployeeNumber(employee.getEmployeeNumber());
+            employee1.setName(employee.getName());
+            employee1.setPassword(employee.getPassword());
+            employee1.setGender(employee.getGender());
+            employee1.setBirthday(employee.getBirthday());
+            employee1.setTelephone(employee.getTelephone());
+            employee1.setEmail(employee.getEmail());
+            employee1.setAddress(employee.getAddress());
+            employee1.setEducation(employee.getEducation());
+            employee1.setNotes(employee.getNotes());
+            employeeMapper.saveAndFlush(employee1);
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public Employee findEmployeeByEmployeeNumber(Integer employeeNumber) {
+        Employee employee=employeeMapper.findEmployeeByEmployeeNumber(employeeNumber);
+        employee.setPosition(positionMapper.findPositionByPositionNumber(employee.getPositionNumber()));
+        employee.setDepartment(departmentMapper.findDepartmentByDepartmentNumber(employee.getDepartmentNumber()));
+        return  employee;
+    }
 }
