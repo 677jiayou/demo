@@ -97,8 +97,8 @@
                             <td th:text="${leave.endTime}"></td>
                             <td th:text="${leave.days}"></td>
                             <td th:text="${leave.status}"></td>
-                            <td><a href="leave.do" class="btn btn-info">查看</a>&nbsp;&nbsp;
-                                <a href="leave.do" class="btn btn-primary">批准</a></td>
+                            <td><a th:href="@{/goLeaveDetail.do(id=${leave.id})}"  class="btn btn-info">查看</a>&nbsp;&nbsp;
+                                <a th:href="@{/leaveOk.do(id=${leave.id})}"  class="btn btn-primary">批准</a></td>
                         </tr>
                         </tbody>
                     </table>

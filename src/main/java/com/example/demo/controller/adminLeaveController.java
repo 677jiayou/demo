@@ -46,22 +46,44 @@ public class adminLeaveController {
         session.setAttribute("leaList",leaList);
         return "leaves_record";
     }
-
+    //全部请假记录
     @RequestMapping("/leaveList.do")
     public String leaveList(){
         List<Lea> allLeaList=leaService.getAllLeas();
         session.setAttribute("allLeaList",allLeaList);
         return "leaves_list";
     }
+    //已批准请假记录
     @RequestMapping("/yesleaveList.do")
     public String yesleaveList(@RequestParam("status")String status){
         List<Lea> yesLeaList=leaService.getLeasByStatus(status);
         session.setAttribute("yesLeaList",yesLeaList);
         return "yes_leaves_list";
     }
+    //未批准请假记录
     @RequestMapping("/noleaveList.do")
     public String noleaveList(@RequestParam("status")String status){
         List<Lea> noLeaList=leaService.getLeasByStatus(status);
+        session.setAttribute("noLeaList",noLeaList);
+        return "no_leaves_list";
+    }
+    //去请假记录详情页
+    @RequestMapping("/goLeaveDetail.do")
+    public String goLeaveDetail(@RequestParam("id")Integer id ){
+        Lea lea=leaService.getLeaById(id);
+        session.setAttribute("lea",lea);
+        return "leave_detail";
+    }
+    //批准请假
+    @RequestMapping("/leaveOk.do")
+    public ModelAndView leaveOk(@RequestParam("id")Integer id ){
+        leaService.leaveSuccess(id);
+        return new ModelAndView("redirect:/noNoNOleaveList.do");
+    }
+    //未批准请假记录2（批准操作后返回专用！）
+    @RequestMapping("/noNoNOleaveList.do")
+    public String noleaveList(){
+        List<Lea> noLeaList=leaService.getLeasByStatus("未批准");
         session.setAttribute("noLeaList",noLeaList);
         return "no_leaves_list";
     }

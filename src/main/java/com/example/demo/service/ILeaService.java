@@ -15,6 +15,10 @@ public interface ILeaService {
     List<Lea> getLeasByStatus(String status);
     //插入请假信息
     boolean saveLea(Lea lea);
+    //根据id查询请假记录
+    Lea getLeaById(Integer id);
+    //批准请假
+    boolean leaveSuccess(Integer id);
 
 
 }

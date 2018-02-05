@@ -66,4 +66,25 @@ public class LeaServiceImpl implements ILeaService {
             return false;
         }
     }
+
+    @Override
+    public Lea getLeaById(Integer id) {
+        Lea lea=leaMapper.findOne(id);
+        lea.setDepartment(departmentMapper.findDepartmentByDepartmentNumber(lea.getDepartmentNumber()));
+        lea.setEmployee(employeeMapper.findEmployeeByEmployeeNumber(lea.getEmployeeNumber()));
+        return lea;
+    }
+
+    @Override
+    public boolean leaveSuccess(Integer id) {
+        try {
+            Lea lea=leaMapper.findOne(id);
+            lea.setStatus("已批准");
+            leaMapper.saveAndFlush(lea);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
