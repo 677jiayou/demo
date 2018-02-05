@@ -25,4 +25,47 @@ public class PositionServiceImpl implements IPositionService {
         Position position=positionMapper.findPositionByPositionNumber(positionNumber);
         return position;
     }
+
+    @Override
+    public Integer getMaxPositionNumber() {
+        return positionMapper.getMaxpositionNumber();
+    }
+
+    @Override
+    public boolean deletePositionByPositionNumber(Integer positionNumber) {
+        try {
+            positionMapper.deletePositionByPositionNumber(positionNumber);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public boolean updatePosition(Position position) {
+        try {
+            Position position1=positionMapper.findPositionByPositionNumber(position.getPositionNumber());
+            position1.setName(position.getName());
+            position1.setLevel(position.getLevel());
+            position1.setNotes(position.getNotes());
+            position1.setPositionNumber(position.getPositionNumber());
+            positionMapper.saveAndFlush(position1);
+            return  true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public boolean saveNewPosition(Position position) {
+        try {
+            positionMapper.save(position);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

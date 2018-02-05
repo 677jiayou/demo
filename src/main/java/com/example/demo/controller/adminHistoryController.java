@@ -78,7 +78,7 @@ public class adminHistoryController {
     }
     // 离职员工个人信息修改表单处理映射处理
     @PostMapping("/historyUpdate.do")
-    public ModelAndView historyUpdateModelAndView (@ModelAttribute(value = "History") History history, @ModelAttribute(value = "date") String date) {
+    public ModelAndView historyUpdate(@ModelAttribute(value = "History") History history, @ModelAttribute(value = "date") String date) {
         history.setBirthday(MTimeUtil.stringParse(date));
         historyService.updateHistory(history);
         return new ModelAndView("redirect:/allHistory.do");

@@ -24,4 +24,47 @@ public class DepartmentServiceImpl implements IDepartmentService {
         Department department=departmentMapper.findDepartmentByDepartmentNumber(departmentNumber);
         return department;
     }
+
+    @Override
+    public boolean updateDepartment(Department department) {
+        try {
+            Department department1=departmentMapper.findDepartmentByDepartmentNumber(department.getDepartmentNumber());
+            department1.setAddress(department.getAddress());
+            department1.setTelephone(department.getTelephone());
+            department1.setName(department.getName());
+            department1.setNotes(department.getNotes());
+            departmentMapper.saveAndFlush(department1);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public Integer getMaxdepartmentNumber() {
+        return departmentMapper.getMaxDepartmentNumber();
+    }
+
+    @Override
+    public boolean saveNewDepartment(Department department) {
+        try {
+            departmentMapper.save(department);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public boolean deleteDepartment(Integer departmentNumber) {
+        try {
+            departmentMapper.deleteDepartmentByDepartmentNumber(departmentNumber);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

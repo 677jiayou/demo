@@ -40,7 +40,7 @@
                 </div>
                 <div class="ibox-content">
                     <div>
-                        <a href="position/toAdd.do" class="btn btn-success">添加职称</a>
+                        <a href="toAddPosition.do" class="btn btn-success">添加职称</a>
                     </div>
                     <table class="table table-striped table-bordered table-hover dataTables-example">
                         <thead>
@@ -61,8 +61,8 @@
                             <td th:text="${position.name}"></td>
                             <td th:text="${position.level}"></td>
                             <td th:text="${position.notes}"></td>
-                            <td><a href="position" class="btn btn-primary">修改</a>&nbsp;&nbsp;
-                                <a href="position" class="btn btn-danger">删除</a></td>
+                            <td><a th:href="@{/toUpdatePosition.do(positionNumber=${position.positionNumber})}" class="btn btn-primary">修改</a>&nbsp;&nbsp;
+                                <a th:href="@{/deletePosition.do(positionNumber=${position.positionNumber})}" class="btn btn-danger">删除</a></td>
                         </tr>
                         </tbody>
                     </table>
