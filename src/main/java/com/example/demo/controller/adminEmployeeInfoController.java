@@ -119,7 +119,24 @@ public class adminEmployeeInfoController {
         return new ModelAndView("redirect:/Allovertime.do");
 
     }
-
+    //去修改加班信息页面的映射
+    @GetMapping("/toUpdateOvertime.do")
+    public String toUpdateOvertime(@RequestParam("id") Integer id){
+        Overtime overtime=overtimeService.getOvertimeById(id);
+        List<Employee> employeeList = employeeService.findAllEmployee();
+        List<Department> departmentList = departmentService.getAllDepartmentInfo();
+        session.setAttribute("employeeList", employeeList);
+        session.setAttribute("departmentList", departmentList);
+        session.setAttribute("overtime",overtime);
+        return "overtime_update";
+    }
+    //修改加班信息表单提交映射
+    @PostMapping("/updateOvertime.do")
+    public ModelAndView updateOvertime(@ModelAttribute(value = "Overtime") Overtime overtime,@ModelAttribute(value = "date") String date,@ModelAttribute(value = "id") Integer id){
+        overtime.setDay(MTimeUtil.stringParse(date));
+        overtimeService.updateOvertime(overtime,id);
+        return new ModelAndView("redirect:/Allovertime.do");
+    }
     //在职员工管理
     @RequestMapping("/employeelist")
     public String employeelist() {

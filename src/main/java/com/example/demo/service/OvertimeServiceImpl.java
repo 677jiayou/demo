@@ -56,4 +56,21 @@ public class OvertimeServiceImpl implements IOvertimeService {
         }
 
     }
+
+    @Override
+    public Overtime getOvertimeById(Integer id) {
+        return overtimeMapper.findOne(id);
+    }
+
+    @Override
+    public boolean updateOvertime(Overtime overtime,Integer id) {
+        try {
+            overtime.setId(id);
+            overtimeMapper.saveAndFlush(overtime);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

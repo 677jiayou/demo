@@ -11,4 +11,8 @@ public interface IOvertimeService {
     List<Overtime> getOvertiomByEmployeeNumber(Integer employeeNumber);
     //插入加班信息
     boolean saveOvertime(Overtime overtime);
+    //根据id查询加班信息
+    Overtime getOvertimeById(Integer id);
+    //加班信息修改
+    boolean updateOvertime(Overtime overtime,Integer id);
 }
