@@ -87,8 +87,8 @@
                                 <td th:text="${history.inTime}"></td>
                                 <td th:text="${history.outTime}"></td>
                                 <td th:text="${history.status}"></td>
-                                <td><a href="history" class="btn btn-info">查看</a>&nbsp;&nbsp;
-                                    <a href="history" class="btn btn-primary">修改</a></td>
+                                <td><a  th:href="@{/historyDetail.do(employeeNumber=${history.employeeNumber})}"  class="btn btn-info">查看</a>&nbsp;&nbsp;
+                                    <a  th:href="@{/history_update.do(employeeNumber=${history.employeeNumber})}"  class="btn btn-primary">修改</a></td>
                             </tr>
                         </tbody>
                     </table>

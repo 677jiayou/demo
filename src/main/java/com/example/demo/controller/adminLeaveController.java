@@ -1,10 +1,14 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Attendance;
+import com.example.demo.entity.Employee;
 import com.example.demo.entity.Lea;
 import com.example.demo.service.LeaServiceImpl;
+import com.example.demo.util.MTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -22,6 +26,18 @@ public class adminLeaveController {
     @RequestMapping("/leaveAdd.do")
     public String toLeave(){
         return "leave_add";
+    }
+    //请假表单提交处理映射
+    @RequestMapping("/submintLeaveAdd.do")
+    public ModelAndView submintLeaveAdd(@ModelAttribute(value="Lea") Lea lea,@ModelAttribute(value="start")String start,@ModelAttribute(value="end")String end ){
+        lea.setStartTime(MTimeUtil.stringParse(start));
+        lea.setEndTime(MTimeUtil.stringParse(end));
+        Employee employee= (Employee) session.getAttribute("employee");
+        lea.setEmployeeNumber(employee.getEmployeeNumber());
+        lea.setDepartmentNumber(employee.getDepartmentNumber());
+        lea.setStatus("未批准");
+        leaService.saveLea(lea);
+        return new ModelAndView("redirect:/leaveList.do");
     }
     //请假记录页面映射
     @RequestMapping("/leaveRecord.do")

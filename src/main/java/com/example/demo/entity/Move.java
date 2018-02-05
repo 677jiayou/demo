@@ -4,6 +4,7 @@ package com.example.demo.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
@@ -19,7 +20,7 @@ public class Move {
   @Column(name = "after")
   private Integer after;
   @Column(name = "time")
-  private java.sql.Timestamp time;
+  private Date time;
   @Column(name = "manager")
   private String manager;
   @Column(name = "notes")

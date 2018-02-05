@@ -4,6 +4,7 @@ package com.example.demo.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
@@ -17,11 +18,11 @@ public class Overtime {
   @Column(name = "employee_number")
   private Integer employeeNumber;
   @Column(name = "day")
-  private java.sql.Date day;
+  private Date day;
   @Column(name = "start_time")
-  private java.sql.Time startTime;
+  private Date startTime;
   @Column(name = "end_time")
-  private java.sql.Time endTime;
+  private Date endTime;
   @Column(name = "notes")
   private String notes;
 

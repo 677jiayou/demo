@@ -4,6 +4,7 @@ package com.example.demo.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
@@ -15,15 +16,15 @@ public class Attendance {
   @Column(name = "employee_number")
   private Integer employeeNumber;
   @Column(name = "day")
-  private java.sql.Date day;
+  private Date day;
   @Column(name = "time_type")
   private String timeType;
   @Column(name = "start_time")
-  private java.sql.Time startTime;
+  private Date startTime;
   @Column(name = "start_type")
   private String startType;
   @Column(name = "end_time")
-  private java.sql.Time endTime;
+  private Date endTime;
   @Column(name = "end_type")
   private String endType;
   @Column(name = "work_type")

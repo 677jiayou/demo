@@ -4,9 +4,7 @@ import com.example.demo.entity.Employee;
 import com.example.demo.repostry.DepartmentMapper;
 import com.example.demo.repostry.EmployeeMapper;
 import com.example.demo.repostry.PositionMapper;
-import com.example.demo.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -21,6 +19,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
     private DepartmentMapper departmentMapper;
     @Autowired
     private PositionMapper positionMapper;
+
     @Override
     public List<Employee> findAllEmployee() {
         List<Employee> employeeList=employeeMapper.findAll();
@@ -76,5 +75,31 @@ public class EmployeeServiceImpl implements IEmployeeService {
         employee.setPosition(positionMapper.findPositionByPositionNumber(employee.getPositionNumber()));
         employee.setDepartment(departmentMapper.findDepartmentByDepartmentNumber(employee.getDepartmentNumber()));
         return  employee;
+    }
+
+    @Override
+    public Integer maxEmployeeNumber() {
+        Integer max=employeeMapper.findMaxEmployeeNumber();
+
+        return max;
+    }
+
+    @Override
+    public boolean saveNewEmployee(Employee employee) {
+
+        try {
+            employeeMapper.save(employee);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public Integer deleteEmployee(Integer employeeNumber) {
+
+
+        return employeeMapper.deleteEmployeeByEmployeeNumber(employeeNumber);
     }
 }

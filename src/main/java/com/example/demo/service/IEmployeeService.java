@@ -16,4 +16,10 @@ public interface IEmployeeService {
     boolean updateEmployee(Employee employee);
     //根据工号查询员工信息
     Employee findEmployeeByEmployeeNumber(Integer employeeNumber);
+    //查询员工号的最大值
+    Integer maxEmployeeNumber();
+    //保存员工信息
+    boolean saveNewEmployee(Employee employee);
+    //删除员工信息
+    Integer deleteEmployee(Integer employeeNumber);
 }

@@ -11,4 +11,8 @@ public interface IHistoryService {
     History getHistoryByEmployeeNumber(Integer employeeNumber);
     //在职员工档案信息查询
     List<History> selectList();
+    //保存员工档案信息
+    boolean saveHistory(History history);
+    //修改员工档案
+    boolean updateHistory(History history);
 }

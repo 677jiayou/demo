@@ -77,9 +77,9 @@
                     <span class="fa arrow"></span>
                 </a>
                     <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="/employeeDetail.do">查看个人信息</a>
+                        <li><a class="J_menuItem" th:href="@{/employeeDetail.do(employeeNumber=${session.employee.employeeNumber})}">查看个人信息</a>
                         </li>
-                        <li><a class="J_menuItem" href="/employee_update.do">修改个人信息</a>
+                        <li><a class="J_menuItem" th:href="@{/employee_update.do(employeeNumber=${session.employee.employeeNumber})}" >修改个人信息</a>
                         </li>
                         <li><a class="J_menuItem"
                                th:href="@{/attendance.do(employeeNumber=${session.employee.employeeNumber})}">查看考勤记录</a>

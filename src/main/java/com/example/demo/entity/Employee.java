@@ -5,6 +5,7 @@ package com.example.demo.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
@@ -20,7 +21,7 @@ public class Employee {
   @Column(name = "gender")
   private String gender;
   @Column(name = "birthday")
-  private java.sql.Date birthday;
+  private Date birthday;
   @Column(name = "telephone")
   private String telephone;
   @Column(name = "email")
@@ -36,7 +37,7 @@ public class Employee {
   @Column(name = "position_number")
   private Integer positionNumber;
   @Column(name = "in_time")
-  private java.sql.Date inTime;
+  private Date inTime;
   @Column(name = "password")
   private String password;
   @Column(name = "notes")

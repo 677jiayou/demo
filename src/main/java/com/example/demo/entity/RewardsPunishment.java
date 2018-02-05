@@ -6,8 +6,8 @@ import lombok.Data;
 @Data
 public class RewardsPunishment {
 
-  private long id;
-  private long employeeNumber;
+  private Integer id;
+  private Integer employeeNumber;
   private String type;
   private String reason;
   private double money;

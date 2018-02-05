@@ -56,8 +56,7 @@
                     <h5>申请请假</h5>
                 </div>
                 <div class="ibox-content">
-                    <form method="post" class="form-horizontal" id="commentForm"
-                          action="#">
+                    <form method="post" class="form-horizontal" id="commentForm" action="#" th:action="@{/submintLeaveAdd.do}" th:object="${Lea}">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">姓名：</label>
 

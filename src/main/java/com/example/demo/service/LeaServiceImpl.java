@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.Attendance;
 import com.example.demo.entity.Lea;
 import com.example.demo.repostry.DepartmentMapper;
 import com.example.demo.repostry.EmployeeMapper;
@@ -53,5 +54,16 @@ public class LeaServiceImpl implements ILeaService {
             lea.setEmployee(employeeMapper.findEmployeeByEmployeeNumber(lea.getEmployeeNumber()));
         }
         return leaList;
+    }
+
+    @Override
+    public boolean saveLea(Lea lea) {
+        try {
+            leaMapper.save(lea);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
