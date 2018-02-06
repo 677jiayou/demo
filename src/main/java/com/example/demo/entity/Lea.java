@@ -38,5 +38,9 @@ public class Lea {
   private Employee employee;
   @Transient
   private Department department;
+  @Transient
+  private  String start;
+  @Transient
+  private  String end;
 
 }

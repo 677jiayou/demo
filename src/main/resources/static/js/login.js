@@ -19,14 +19,14 @@ $().ready(function () {
                 success: function (response) {
                     //response为布尔值，true时表示用户名密码输入正确，我们返回首页，false表示输入错误
                     if(response!=null){
-                        if (response.position.name=="人事部主任") {
+                        if (response.position.level=="人事部主任") {
                             location.href="index1.do"
                         }else
-                        if (response.position.name=="人事部员工") {
+                        if (response.position.level=="人事部员工") {
                             location.href="index2.do"
                         }
                         else
-                        if (response.position.name=="部门主任") {
+                        if (response.position.level=="部门主任") {
                             location.href="index3.do"
                         }else {
                             location.href="index4.do"

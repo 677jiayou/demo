@@ -33,28 +33,8 @@
 
     <!-- layer javascript -->
     <script src="js/plugins/layer/layer.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.dataTables-example').dataTable();
-
-            var oTable = $('#editable').dataTable();
-
-            oTable.$('td').editable('../example_ajax.php', {
-                "callback": function (sValue, y) {
-                    var aPos = oTable.fnGetPosition(this);
-                    oTable.fnUpdate(sValue, aPos[0], aPos[1]);
-                },
-                "submitdata": function (value, settings) {
-                    return {
-                        "row_id": this.parentNode.getAttribute('id'),
-                        "column": oTable.fnGetPosition(this)[2]
-                    };
-                },
-                "width": "90%",
-                "height": "100%"
-            });
-        });
-    </script>
+    <!--分页-->
+    <script src="js/doPage.js"></script>
 </head>
 <body class="gray-bg">
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -82,8 +62,8 @@
                         <tr th:each="leave : ${session.yesLeaList}" class="gradeA">
                             <td th:text="${leave.id}"></td>
                             <td th:text="${leave.employee.name}"></td>
-                            <td th:text="${leave.startTime}"></td>
-                            <td th:text="${leave.endTime}"></td>
+                            <td th:text="${leave.start}"></td>
+                            <td th:text="${leave.end}"></td>
                             <td th:text="${leave.days}"></td>
                             <td th:text="${leave.type}"></td>
                             <td th:text="${leave.reason}"></td>

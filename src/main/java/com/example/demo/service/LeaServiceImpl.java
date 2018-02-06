@@ -5,6 +5,7 @@ import com.example.demo.entity.Lea;
 import com.example.demo.repostry.DepartmentMapper;
 import com.example.demo.repostry.EmployeeMapper;
 import com.example.demo.repostry.LeaMapper;
+import com.example.demo.util.MTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,10 @@ public class LeaServiceImpl implements ILeaService {
                 ) {
             lea.setDepartment(departmentMapper.findDepartmentByDepartmentNumber(lea.getDepartmentNumber()));
             lea.setEmployee(employeeMapper.findEmployeeByEmployeeNumber(lea.getEmployeeNumber()));
+            String startTime=MTimeUtil.dateFormat(lea.getStartTime());
+            lea.setStart(startTime);
+            String endTime=MTimeUtil.dateFormat(lea.getEndTime());
+            lea.setEnd(endTime);
         }
         return leaList;
     }
@@ -41,6 +46,10 @@ public class LeaServiceImpl implements ILeaService {
                 ) {
             lea.setDepartment(departmentMapper.findDepartmentByDepartmentNumber(lea.getDepartmentNumber()));
             lea.setEmployee(employeeMapper.findEmployeeByEmployeeNumber(lea.getEmployeeNumber()));
+            String startTime=MTimeUtil.dateFormat(lea.getStartTime());
+            lea.setStart(startTime);
+            String endTime=MTimeUtil.dateFormat(lea.getEndTime());
+            lea.setEnd(endTime);
         }
         return leaList;
     }
@@ -52,6 +61,10 @@ public class LeaServiceImpl implements ILeaService {
                 ) {
             lea.setDepartment(departmentMapper.findDepartmentByDepartmentNumber(lea.getDepartmentNumber()));
             lea.setEmployee(employeeMapper.findEmployeeByEmployeeNumber(lea.getEmployeeNumber()));
+            String startTime=MTimeUtil.dateFormat(lea.getStartTime());
+            lea.setStart(startTime);
+            String endTime=MTimeUtil.dateFormat(lea.getEndTime());
+            lea.setEnd(endTime);
         }
         return leaList;
     }
@@ -72,6 +85,10 @@ public class LeaServiceImpl implements ILeaService {
         Lea lea=leaMapper.findOne(id);
         lea.setDepartment(departmentMapper.findDepartmentByDepartmentNumber(lea.getDepartmentNumber()));
         lea.setEmployee(employeeMapper.findEmployeeByEmployeeNumber(lea.getEmployeeNumber()));
+        String startTime=MTimeUtil.dateFormat(lea.getStartTime());
+        lea.setStart(startTime);
+        String endTime=MTimeUtil.dateFormat(lea.getEndTime());
+        lea.setEnd(endTime);
         return lea;
     }
 

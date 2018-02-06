@@ -30,6 +30,7 @@ public class adminLoginController {
     @ResponseBody
     public String actionLogin(@RequestParam("loginUserName") Integer username,@RequestParam("loginPassword") String password){
         Employee employee=employeeService.findEmployeeByNumAndPassword(username,password);
+        httpSession.removeAttribute("employee");
         httpSession.setAttribute("employee",employee);
         return  new Gson().toJson(employee);
     }
@@ -42,7 +43,7 @@ public class adminLoginController {
     //注销登录
     @RequestMapping("/logout.do")
     public String logout(HttpSession session){
-        session.removeAttribute("loged");
+        session.removeAttribute("employee");
         return "login";
     }
     //退出登录

@@ -48,4 +48,8 @@ public class Employee {
   private Department department;
   @Transient
   private Position position;
+  @Transient
+  private String bir;
+  @Transient
+  private String inTo;
 }

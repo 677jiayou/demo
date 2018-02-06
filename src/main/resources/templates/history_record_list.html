@@ -27,28 +27,8 @@
 
     <!-- 自定义js -->
     <script src="js/content.js?v=1.0.0"></script>
-    <script>
-        $(document).ready(function () {
-            $('.dataTables-example').dataTable();
-
-            var oTable = $('#editable').dataTable();
-
-            oTable.$('td').editable('../example_ajax.php', {
-                "callback": function (sValue, y) {
-                    var aPos = oTable.fnGetPosition(this);
-                    oTable.fnUpdate(sValue, aPos[0], aPos[1]);
-                },
-                "submitdata": function (value, settings) {
-                    return {
-                        "row_id": this.parentNode.getAttribute('id'),
-                        "column": oTable.fnGetPosition(this)[2]
-                    };
-                },
-                "width": "90%",
-                "height": "100%"
-            });
-        });
-    </script>
+    <!--分页-->
+    <script src="js/doPage.js"></script>
 </head>
 <body class="gray-bg">
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -84,8 +64,8 @@
                                 <td th:text="${history.telephone}"></td>
                                 <td th:text="${history.department.name}"></td>
                                 <td th:text="${history.position.name}"></td>
-                                <td th:text="${history.inTime}"></td>
-                                <td th:text="${history.outTime}"></td>
+                                <td th:text="${history.inTo}"></td>
+                                <td th:text="${history.outTo}"></td>
                                 <td th:text="${history.status}"></td>
                                 <td><a  th:href="@{/historyDetail.do(employeeNumber=${history.employeeNumber})}"  class="btn btn-info">查看</a>&nbsp;&nbsp;
                                     <a  th:href="@{/history_update.do(employeeNumber=${history.employeeNumber})}"  class="btn btn-primary">修改</a></td>

@@ -34,5 +34,11 @@ public class Attendance {
   //字段外属性
   @Transient
   private Employee employee;
+  @Transient
+  private String start;
+  @Transient
+  private String end;
+  @Transient
+  private String day1;
 
 }

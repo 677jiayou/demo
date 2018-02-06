@@ -118,7 +118,14 @@ public class adminEmployeeInfoController {
         session.setAttribute("allOvertimeList", allOvertimeList);
         return "overtime_list";
     }
-
+    //删除加班信息
+    @GetMapping("/deleteOvertime.do")
+    public String deleteOvertime(@RequestParam("id") Integer id) {
+        overtimeService.deleteOvertime(id);
+        List<Overtime> allOvertimeList = overtimeService.getAllOverTime();
+        session.setAttribute("allOvertimeList", allOvertimeList);
+        return "overtime_list";
+    }
     //去安排加班
     @GetMapping("/overtimeToAdd.do")
     public String overtimeToAdd() {

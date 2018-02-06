@@ -15,4 +15,6 @@ public interface IOvertimeService {
     Overtime getOvertimeById(Integer id);
     //加班信息修改
     boolean updateOvertime(Overtime overtime,Integer id);
+    //根据id删除加班信息
+    boolean deleteOvertime(Integer id);
 }

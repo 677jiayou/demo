@@ -4,6 +4,7 @@ import com.example.demo.entity.History;
 import com.example.demo.repostry.DepartmentMapper;
 import com.example.demo.repostry.HistoryMapper;
 import com.example.demo.repostry.PositionMapper;
+import com.example.demo.util.MTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,19 @@ public class HistoryServiceImpl implements IHistoryService {
     private PositionMapper positionMapper;
     @Override
     public List<History> getAllHistory() {
-        return historyMapper.findAll();
+        List<History> histories=historyMapper.findAll();
+
+        for (History history:histories
+             ) {
+            String day=MTimeUtil.dateFormat(history.getBirthday());
+            history.setBir(day);
+            String in=MTimeUtil.dateFormat(history.getInTime());
+            history.setInTo(in);
+            String out=MTimeUtil.dateFormat(history.getOutTime());
+            history.setOutTo(out);
+        }
+
+        return histories;
     }
 
     @Override
@@ -29,6 +42,12 @@ public class HistoryServiceImpl implements IHistoryService {
         History history= historyMapper.findHistoryByEmployeeNumber(employeeNumber);
         history.setPosition(positionMapper.findPositionByPositionNumber(history.getPositionNumber()));
         history.setDepartment(departmentMapper.findDepartmentByDepartmentNumber(history.getDepartmentNumber()));
+        String day=MTimeUtil.dateFormat(history.getBirthday());
+        history.setBir(day);
+        String in=MTimeUtil.dateFormat(history.getInTime());
+        history.setInTo(in);
+        String out=MTimeUtil.dateFormat(history.getOutTime());
+        history.setOutTo(out);
         return history;
     }
 
@@ -38,8 +57,15 @@ public class HistoryServiceImpl implements IHistoryService {
         List<History> nowHistories=new ArrayList<>();
         for (History history:histories
              ) {
+            String day=MTimeUtil.dateFormat(history.getBirthday());
+            history.setBir(day);
+            String intime=MTimeUtil.dateFormat(history.getInTime());
+            history.setInTo(intime);
+            String outtime=MTimeUtil.dateFormat(history.getOutTime());
+            history.setOutTo(outtime);
             if (history.getOutTime()!=null){
                 nowHistories.add(history);
+
             }
         }
 

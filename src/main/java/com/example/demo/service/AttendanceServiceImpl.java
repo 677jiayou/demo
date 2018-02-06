@@ -39,6 +39,13 @@ public class AttendanceServiceImpl implements IAttendanceService {
         for (Attendance attendance:attendanceList
                 ) {
             attendance.setEmployee(employeeMapper.findEmployeeByEmployeeNumber(attendance.getEmployeeNumber()));
+            String startTime = MTimeUtil.timeFormat(attendance.getStartTime());
+            attendance.setStart(startTime);
+            String endTime = MTimeUtil.timeFormat(attendance.getEndTime());
+            attendance.setEnd(endTime);
+            String day=MTimeUtil.dateFormat(attendance.getDay());
+            attendance.setDay1(day);
+
         }
         return attendanceList;
     }
@@ -49,6 +56,12 @@ public class AttendanceServiceImpl implements IAttendanceService {
         for (Attendance attendance:attendanceList
              ) {
             attendance.setEmployee(employeeMapper.findEmployeeByEmployeeNumber(employee_number));
+            String startTime = MTimeUtil.timeFormat(attendance.getStartTime());
+            attendance.setStart(startTime);
+            String endTime = MTimeUtil.timeFormat(attendance.getEndTime());
+            attendance.setEnd(endTime);
+            String day=MTimeUtil.dateFormat(attendance.getDay());
+            attendance.setDay1(day);
         }
         return attendanceList;
     }
@@ -65,6 +78,8 @@ public class AttendanceServiceImpl implements IAttendanceService {
         attendance.setEmployeeNumber(employeeNumber);
         attendance.setDay(nowDate);
         attendance.setStartTime(nowTime);
+        System.out.println(nowDate);
+        System.out.println(nowTime);
         if (nowTime.after(amTime) && nowTime.before(amEndTime)) {
             Attendance att = attendanceMapper.findAttendanceByDayAndEmployeeNumberAndTimeType(nowDate,employeeNumber, "上午");
             if (att == null) {

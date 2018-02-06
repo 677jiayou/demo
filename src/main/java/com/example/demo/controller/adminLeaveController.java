@@ -37,7 +37,7 @@ public class adminLeaveController {
         lea.setDepartmentNumber(employee.getDepartmentNumber());
         lea.setStatus("未批准");
         leaService.saveLea(lea);
-        return new ModelAndView("redirect:/leaveList.do");
+        return new ModelAndView("redirect:/onselfLeaveRecord.do");
     }
     //请假记录页面映射
     @RequestMapping("/leaveRecord.do")
@@ -46,6 +46,15 @@ public class adminLeaveController {
         session.setAttribute("leaList",leaList);
         return "leaves_record";
     }
+    //请假记录页面映射(请假申请提交后)
+    @RequestMapping("/onselfLeaveRecord.do")
+    public String onselfLeaveRecord(){
+        Employee employee= (Employee) session.getAttribute("employee");
+        List<Lea> leaList=leaService.getLeasByaEmployeeNumber(employee.getEmployeeNumber());
+        session.setAttribute("leaList",leaList);
+        return "leaves_record";
+    }
+
     //全部请假记录
     @RequestMapping("/leaveList.do")
     public String leaveList(){

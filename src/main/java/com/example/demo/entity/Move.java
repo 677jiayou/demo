@@ -33,6 +33,8 @@ public class Move {
   private Department department2;
   @Transient
   private Employee employee;
+  @Transient
+  private String time1;
 
 
 }

@@ -4,6 +4,7 @@ import com.example.demo.entity.Employee;
 import com.example.demo.repostry.DepartmentMapper;
 import com.example.demo.repostry.EmployeeMapper;
 import com.example.demo.repostry.PositionMapper;
+import com.example.demo.util.MTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,10 @@ public class EmployeeServiceImpl implements IEmployeeService {
              ) {
             employee.setPosition(positionMapper.findPositionByPositionNumber(employee.getPositionNumber()));
             employee.setDepartment(departmentMapper.findDepartmentByDepartmentNumber(employee.getDepartmentNumber()));
+            String day=MTimeUtil.dateFormat(employee.getBirthday());
+            employee.setBir(day);
+            String intime=MTimeUtil.dateFormat(employee.getInTime());
+            employee.setInTo(intime);
         }
         return employeeList;
     }
@@ -36,6 +41,10 @@ public class EmployeeServiceImpl implements IEmployeeService {
         Employee employee=employeeMapper.findOne(id);
         employee.setPosition(positionMapper.findPositionByPositionNumber(employee.getPositionNumber()));
         employee.setDepartment(departmentMapper.findDepartmentByDepartmentNumber(employee.getDepartmentNumber()));
+        String day=MTimeUtil.dateFormat(employee.getBirthday());
+        employee.setBir(day);
+        String intime=MTimeUtil.dateFormat(employee.getInTime());
+        employee.setInTo(intime);
         return employee;
     }
 
@@ -44,6 +53,10 @@ public class EmployeeServiceImpl implements IEmployeeService {
         Employee employee=employeeMapper.findEmployeeByEmployeeNumberAndPassword(userName,password);
         employee.setPosition(positionMapper.findPositionByPositionNumber(employee.getPositionNumber()));
         employee.setDepartment(departmentMapper.findDepartmentByDepartmentNumber(employee.getDepartmentNumber()));
+        String day=MTimeUtil.dateFormat(employee.getBirthday());
+        employee.setBir(day);
+        String intime=MTimeUtil.dateFormat(employee.getInTime());
+        employee.setInTo(intime);
         return employee;
     }
 
@@ -74,6 +87,10 @@ public class EmployeeServiceImpl implements IEmployeeService {
         Employee employee=employeeMapper.findEmployeeByEmployeeNumber(employeeNumber);
         employee.setPosition(positionMapper.findPositionByPositionNumber(employee.getPositionNumber()));
         employee.setDepartment(departmentMapper.findDepartmentByDepartmentNumber(employee.getDepartmentNumber()));
+        String day=MTimeUtil.dateFormat(employee.getBirthday());
+        employee.setBir(day);
+        String intime=MTimeUtil.dateFormat(employee.getInTime());
+        employee.setInTo(intime);
         return  employee;
     }
 
@@ -111,6 +128,10 @@ public class EmployeeServiceImpl implements IEmployeeService {
                 ) {
             employee.setPosition(positionMapper.findPositionByPositionNumber(employee.getPositionNumber()));
             employee.setDepartment(departmentMapper.findDepartmentByDepartmentNumber(employee.getDepartmentNumber()));
+            String day=MTimeUtil.dateFormat(employee.getBirthday());
+            employee.setBir(day);
+            String intime=MTimeUtil.dateFormat(employee.getInTime());
+            employee.setInTo(intime);
         }
         return employeeList;
     }

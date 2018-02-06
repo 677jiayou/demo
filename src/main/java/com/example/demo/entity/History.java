@@ -51,5 +51,10 @@ public class History {
   private Department department;
   @Transient
   private Position position;
-
+  @Transient
+  private String bir;
+  @Transient
+  private String inTo;
+  @Transient
+  private String outTo;
 }

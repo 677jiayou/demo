@@ -46,6 +46,8 @@
             });
         }
     </script>
+    <!--分页-->
+    <script src="js/doPage.js"></script>
 </head>
 <body class="gray-bg">
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -82,7 +84,7 @@
                             <td th:text="${employee.telephone}"></td>
                             <td th:text="${employee.department.name}"></td>
                             <td th:text="${employee.position.name}"></td>
-                            <td th:text="${employee.inTime}"></td>
+                            <td th:text="${employee.inTo}"></td>
                             <td><a th:href="@{/employeeDetail.do(employeeNumber=${employee.employeeNumber})}" class="btn btn-info">查看</a>&nbsp;&nbsp;
                                 <a th:href="@{/employee_update.do(employeeNumber=${employee.employeeNumber})}" class="btn btn-primary">修改</a>&nbsp;&nbsp;
                                 <a th:href="@{/employeeDelete.do(employeeNumber=${employee.employeeNumber})}" class="btn btn-danger delete">删除</a></td>
@@ -90,26 +92,26 @@
 
                         </tbody>
                     </table>
-                    <div>
-							<span style="float: left; padding: 5px">
-								当前&nbsp;<span style="color: red;"></span>&nbsp;/&nbsp;<b></b>&nbsp;页&nbsp;&nbsp;
-								总共&nbsp;<b></b>&nbsp;条</span>
-                        <nav aria-label="Page navigation" style="margin: 0 auto; width: 240px">
-                            <ul class="pagination" style="margin: 0;">
-                                <li>
-                                    <a href="employee"
-                                       aria-label="Previous"> <span aria-hidden="true">前一页</span>
-                                    </a>
-                                </li>
+                    <!--<div>-->
+							<!--<span style="float: left; padding: 5px">-->
+								<!--当前&nbsp;<span style="color: red;"></span>&nbsp;/&nbsp;<b></b>&nbsp;页&nbsp;&nbsp;-->
+								<!--总共&nbsp;<b></b>&nbsp;条</span>-->
+                        <!--<nav aria-label="Page navigation" style="margin: 0 auto; width: 240px">-->
+                            <!--<ul class="pagination" style="margin: 0;">-->
+                                <!--<li>-->
+                                    <!--<a href="employee"-->
+                                       <!--aria-label="Previous"> <span aria-hidden="true">前一页</span>-->
+                                    <!--</a>-->
+                                <!--</li>-->
 
-                                <li><a href="employee"></a></li>
+                                <!--<li><a href="employee"></a></li>-->
 
-                                <li><a href="employee">
-                                    <span aria-hidden="true">后一页</span>
-                                </a></li>
-                            </ul>
-                        </nav>
-                    </div>
+                                <!--<li><a href="employee">-->
+                                    <!--<span aria-hidden="true">后一页</span>-->
+                                <!--</a></li>-->
+                            <!--</ul>-->
+                        <!--</nav>-->
+                    <!--</div>-->
                 </div>
             </div>
         </div>

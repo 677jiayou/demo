@@ -30,6 +30,12 @@ public class Overtime {
   private Employee employee;
   @Transient
   private Department department;
+  @Transient
+  private String day1;
+  @Transient
+  private  String start;
+  @Transient
+  private  String end;
 
 
 }

@@ -10,4 +10,6 @@ import java.util.List;
 public interface OvertimeMapper extends JpaRepository<Overtime,Integer> {
 
     List<Overtime> findOvertimesByEmployeeNumber(Integer employeeNumber);
+
+    boolean deleteOvertimeById(Integer id);
 }

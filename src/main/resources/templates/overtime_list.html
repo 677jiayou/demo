@@ -45,6 +45,8 @@
             });
         }
     </script>
+    <!--分页-->
+    <script src="js/doPage.js"></script>
 </head>
 <body class="gray-bg">
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -74,32 +76,32 @@
                             <td th:text="${overtime.id}"></td>
                             <td th:text="${overtime.department.name}"></td>
                             <td th:text="${overtime.employee.name}"></td>
-                            <td th:text="${overtime.day}"></td>
+                            <td th:text="${overtime.day1}"></td>
                             <td><a th:href="@{/toUpdateOvertime.do(id=${overtime.id})}"  class="btn btn-primary">修改</a>&nbsp;&nbsp;
-                                <a onclick="" class="btn btn-danger delete">删除</a></td>
+                                <a th:href="@{/deleteOvertime.do(id=${overtime.id})}" class="btn btn-danger delete">删除</a></td>
                         </tr>
                         </tbody>
                     </table>
-                    <div>
-							<span style="float: left; padding: 5px">
-								当前&nbsp;<span style="color: red;"></span>&nbsp;/&nbsp;<b></b>&nbsp;页&nbsp;&nbsp;
-								总共&nbsp;<b></b>&nbsp;条</span>
-                        <nav aria-label="Page navigation" style="margin: 0 auto; width: 240px">
-                            <ul class="pagination" style="margin: 0;">
-                                <li>
-                                    <a href="overtime"
-                                       aria-label="Previous"> <span aria-hidden="true">前一页</span>
-                                    </a>
-                                </li>
+                    <!--<div>-->
+							<!--<span style="float: left; padding: 5px">-->
+								<!--当前&nbsp;<span style="color: red;"></span>&nbsp;/&nbsp;<b></b>&nbsp;页&nbsp;&nbsp;-->
+								<!--总共&nbsp;<b></b>&nbsp;条</span>-->
+                        <!--<nav aria-label="Page navigation" style="margin: 0 auto; width: 240px">-->
+                            <!--<ul class="pagination" style="margin: 0;">-->
+                                <!--<li>-->
+                                    <!--<a href="overtime"-->
+                                       <!--aria-label="Previous"> <span aria-hidden="true">前一页</span>-->
+                                    <!--</a>-->
+                                <!--</li>-->
 
-                                <li><a href="overtime"></a></li>
+                                <!--<li><a href="overtime"></a></li>-->
 
-                                <li><a href="overtime"
-                                       aria-label="Next"> <span aria-hidden="true">后一页</span>
-                                </a></li>
-                            </ul>
-                        </nav>
-                    </div>
+                                <!--<li><a href="overtime"-->
+                                       <!--aria-label="Next"> <span aria-hidden="true">后一页</span>-->
+                                <!--</a></li>-->
+                            <!--</ul>-->
+                        <!--</nav>-->
+                    <!--</div>-->
                 </div>
             </div>
         </div>
