@@ -118,11 +118,11 @@
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="leave/notlist.do">未批准列表</a>
+                        <li><a class="J_menuItem" th:href="@{/noleaveList.do(status='未批准')}">未批准列表</a>
                         </li>
                     </ul>
                     <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="leave/yeslist.do">已批准列表</a>
+                        <li><a class="J_menuItem" th:href="@{/yesleaveList.do(status='已批准')}">已批准列表</a>
                         </li>
                     </ul>
                 </li>
@@ -136,7 +136,7 @@
         <div class="row border-bottom">
             <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i class="fa fa-bars"></i> </a>
-                    <form role="search" class="navbar-form-custom" method="post" action="employee/search.do?pageNo=1" target="J_iframe">
+                    <form role="search" class="navbar-form-custom"  action="#" th:action="@{/searchEmployees.do}"  method="post" target="J_iframe">
                         <div class="form-group">
                             <input type="text" placeholder="输入查找的员工的姓名 …" class="form-control" name="input" id="top-search">
                         </div>
@@ -152,10 +152,10 @@
                             <li><a href="/employeeDetail.do" target="J_iframe">我的账户</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="employee/login.do">退出登录</a>
+                            <li><a href="/login.do">退出登录</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="employee/logout.do">注销登录</a>
+                            <li><a href="/logout.do">注销登录</a>
                             </li>
                         </ul>
                     </li>

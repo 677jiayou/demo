@@ -102,4 +102,16 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
         return employeeMapper.deleteEmployeeByEmployeeNumber(employeeNumber);
     }
+
+    @Override
+    public List<Employee> getEmployeesByInput(String input) {
+
+        List<Employee> employeeList=employeeMapper.findEmployeeByInput(input);
+        for (Employee employee:employeeList
+                ) {
+            employee.setPosition(positionMapper.findPositionByPositionNumber(employee.getPositionNumber()));
+            employee.setDepartment(departmentMapper.findDepartmentByDepartmentNumber(employee.getDepartmentNumber()));
+        }
+        return employeeList;
+    }
 }

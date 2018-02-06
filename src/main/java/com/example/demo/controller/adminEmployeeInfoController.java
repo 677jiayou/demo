@@ -202,4 +202,24 @@ public class adminEmployeeInfoController {
        employeeService.deleteEmployee(employeeNumber);
         return new ModelAndView("redirect:/employeelist.do");
     }
+
+    //员工姓名的模糊查询
+    @PostMapping("/searchEmployees.do")
+    public ModelAndView searchEmployees(@RequestParam("input") String input){
+        input="%"+input+"%";
+        List<Employee> employeeList= employeeService.getEmployeesByInput(input);
+        session.setAttribute("employeeList", employeeList);
+        return new ModelAndView("employee_list");
+    }
+    //注销登录
+    @RequestMapping("/logout.do")
+    public String logout(HttpSession session){
+        session.removeAttribute("loged");
+        return "login";
+    }
+    //退出登录
+    @RequestMapping("/login.do")
+    public String toLogin(){
+        return "login";
+    }
 }

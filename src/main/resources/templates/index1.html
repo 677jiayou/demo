@@ -163,7 +163,7 @@
             <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i
                         class="fa fa-bars"></i> </a>
-                    <form role="search" class="navbar-form-custom" method="post" action="employee/search.do?pageNo=1"
+                    <form role="search" class="navbar-form-custom"  action="#" th:action="@{/searchEmployees.do}"  method="post"
                           target="J_iframe">
                         <div class="form-group">
                             <input type="text" placeholder="输入查找的员工的姓名 …" class="form-control" name="input"
@@ -181,10 +181,10 @@
                             <li><a href="/employeeDetail.do" target="J_iframe">我的账户</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="employee/login.do">退出登录</a>
+                            <li><a href="/login.do">退出登录</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="employee/logout.do">注销登录</a>
+                            <li><a href="/logout.do">注销登录</a>
                             </li>
                         </ul>
                     </li>

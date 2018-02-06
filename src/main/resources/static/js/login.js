@@ -38,7 +38,7 @@ $().ready(function () {
 
                 },
                 error : function() {
-                    alert("异常！!!!!!!!!!!!");
+                    $("#np-warning").html("*用户名或者密码错误！请重新输入");
                 }
             });
 

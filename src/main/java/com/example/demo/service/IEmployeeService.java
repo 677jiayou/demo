@@ -22,4 +22,6 @@ public interface IEmployeeService {
     boolean saveNewEmployee(Employee employee);
     //删除员工信息
     Integer deleteEmployee(Integer employeeNumber);
+    //模糊查询
+    List<Employee> getEmployeesByInput(String input);
 }

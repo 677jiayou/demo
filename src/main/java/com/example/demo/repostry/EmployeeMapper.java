@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Transactional
 @Repository
@@ -24,5 +25,8 @@ public interface EmployeeMapper extends JpaRepository<Employee,Integer> ,JpaSpec
 
     Integer deleteEmployeeByEmployeeNumber(Integer employeeNumber);
 
+
+    @Query("select e from Employee e where e.name like ?1")
+    List<Employee> findEmployeeByInput(String input);
 
 }
