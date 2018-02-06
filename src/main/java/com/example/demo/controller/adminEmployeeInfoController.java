@@ -36,6 +36,21 @@ public class adminEmployeeInfoController {
     @Autowired
     private HistoryServiceImpl historyService;
 
+    @RequestMapping("/addStartTime.do")
+    public String addStartTime(@RequestParam("employeeNumber") Integer employeeNumber){
+        attendanceService.addStart(employeeNumber);
+        return "welcome";
+    }
+
+    @RequestMapping("/addEndTime.do")
+    public String addEndTime(@RequestParam("employeeNumber") Integer employeeNumber){
+        attendanceService.addEnd(employeeNumber);
+        return "welcome";
+    }
+
+
+
+
     // 个人信息页面映射处理
     @GetMapping("/employeeDetail.do")
     public String toDetail(@RequestParam("employeeNumber") Integer employeeNumber) {
@@ -61,23 +76,29 @@ public class adminEmployeeInfoController {
     public ModelAndView employeeUpdate(@ModelAttribute(value = "Employee") Employee employee, @ModelAttribute(value = "date") String date) {
         employee.setBirthday(MTimeUtil.stringParse(date));
         boolean flag = employeeService.updateEmployee(employee);
-        return new ModelAndView("redirect:/employeeDetail.do");
+        Employee employee1 = employeeService.findEmployeeByEmployeeNumber(employee.getEmployeeNumber());
+        session.setAttribute("employee", employee1);
+        ModelAndView modelAndView=new ModelAndView();
+        modelAndView.setViewName("employee_detail");
+        return modelAndView;
     }
 
-    //个人请假信息
+
+
+    //个人考勤信息
     @GetMapping("/attendance.do")
     public String attendance(@RequestParam("employeeNumber") Integer employeeNumber) {
         List<Attendance> attendanceList = attendanceService.getAttendanceByEmployeeNum(employeeNumber);
-        session.setAttribute("attendanceList", attendanceList);
+        session.setAttribute("attendances", attendanceList);
         return "attendance";
     }
 
-    //全部请假信息映射
+    //全部人员考勤信息映射
     @GetMapping("/attendanceList.do")
     public String attendanceList() {
         List<Attendance> attendanceList = attendanceService.getAllAttendance();
         session.setAttribute("attendanceList", attendanceList);
-        return "attendance";
+        return "attendance_list";
     }
 
 

@@ -74,7 +74,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="attendance : ${session.allAttendanceList}" class="gradeA">
+                        <tr th:each="attendance : ${session.attendanceList}" class="gradeA">
                             <td th:text="${attendance.id}"></td>
                             <td th:text="${attendance.employeeNumber}"></td>
                             <td th:text="${attendance.employee.name}"></td>

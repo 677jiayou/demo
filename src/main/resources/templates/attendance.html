@@ -74,17 +74,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="attendance : ${session.attendanceList}" class="gradeA">
-                                <td th:text="${attendance.id}"></td>
-                                <td th:text="${attendance.employeeNumber}"></td>
-                                <td th:text="${attendance.employee.name}"></td>
-                                <td th:text="${attendance.day}"></td>
-                                <td th:text="${attendance.timeType}"></td>
-                                <td th:text="${attendance.startTime}"></td>
-                                <td th:text="${attendance.startType}"></td>
-                                <td th:text="${attendance.endTime}"></td>
-                                <td th:text="${attendance.endType}"></td>
-                            </tr>
+                        <tr th:each="attendance : ${session.attendances}" class="gradeA">
+                            <td th:text="${attendance.id}"></td>
+                            <td th:text="${attendance.employeeNumber}"></td>
+                            <td th:text="${attendance.employee.name}"></td>
+                            <td th:text="${attendance.day}"></td>
+                            <td th:text="${attendance.timeType}"></td>
+                            <td th:text="${attendance.startTime}"></td>
+                            <td th:text="${attendance.startType}"></td>
+                            <td th:text="${attendance.endTime}"></td>
+                            <td th:text="${attendance.endType}"></td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
