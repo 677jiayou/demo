@@ -38,4 +38,16 @@ public class adminLoginController {
     public String goIndex(){
         return "welcome";
     }
+
+    //注销登录
+    @RequestMapping("/logout.do")
+    public String logout(HttpSession session){
+        session.removeAttribute("loged");
+        return "login";
+    }
+    //退出登录
+    @RequestMapping("/login.do")
+    public String Login(){
+        return "login";
+    }
 }

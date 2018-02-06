@@ -211,15 +211,5 @@ public class adminEmployeeInfoController {
         session.setAttribute("employeeList", employeeList);
         return new ModelAndView("employee_list");
     }
-    //注销登录
-    @RequestMapping("/logout.do")
-    public String logout(HttpSession session){
-        session.removeAttribute("loged");
-        return "login";
-    }
-    //退出登录
-    @RequestMapping("/login.do")
-    public String toLogin(){
-        return "login";
-    }
+
 }
